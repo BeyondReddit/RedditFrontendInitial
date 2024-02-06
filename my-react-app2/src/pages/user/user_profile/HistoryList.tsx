@@ -1,15 +1,18 @@
 import { useContext } from 'react';
 import { userContext, IUserContext } from './HistoryProvider';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 const HistoryList = () => {
     const {HistoryItems } =
         useContext<IUserContext>(userContext);
 
     return (
         <>
-            <h2>User list</h2>
+            <h2>History list</h2>
 
-            <table className="product-table">
+            <table className="table">
                 <thead>
                 <tr>
                     <th>post title</th>
