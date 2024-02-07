@@ -69,7 +69,7 @@ const saveProfile = async () => {
       if (newUrl) {
         try {
           const token = localStorage.getItem('Authorization');
-          await axios.post('http://localhost:8083/users/updateUserProfileImgUrl', { newUrl }, {
+          await axios.post('http://localhost:10010/users/updateUserProfileImgUrl', { newUrl }, {
             headers: {
               Authorization: `Bearer ${token}`,
             },

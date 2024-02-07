@@ -1,120 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Form, Button, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
-const EditProfile = ({ history }) => {
-  const [user, setUser] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-  });
-  const [file, setFile] = useState(null);
+const MySpace = () => {
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('Authorization'); // Retrieve token from local storage
         const response = await axios.get('http://localhost:10010/users/getUserByUserId', {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            Authorization: `Bearer ${token}`, // Use the token in the Authorization header
+          },
         });
-        setUser(response.data);
-        localStorage.setItem('user', JSON.stringify(response.data)); // Store user in localStorage
+        setUser(response.data); // Assuming the API returns the user object directly
       } catch (error) {
         console.error('Error fetching user data:', error);
+        // Handle error (e.g., set an error state, show a message, etc.)
       }
     };
 
     fetchUser();
   }, []);
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
-  };
-
-  const handleSave = async (e) => {
-    e.preventDefault();
-
-    if (file) {
-      const formData = new FormData();
-      formData.append('file', file);
-
-      try {
-        const uploadResponse = await axios.post('http://localhost:10010/files/upload', formData, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        });
-        const token = localStorage.getItem('token');
-        await axios.post('http://localhost:10010/users/updateUserProfileImgUrl', {
-          newUrl: uploadResponse.data.fileUri,
-        }, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-      } catch (error) {
-        console.error('Error uploading file:', error);
-      }
-    }
-
-    try {
-      const token = localStorage.getItem('token');
-      await axios.post('http://localhost:10010/users/updateUserInfo', {
-        ...user, // Assuming the API accepts firstName, lastName, email directly
-      }, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      localStorage.setItem('user', JSON.stringify(user)); // Update user in localStorage
-      history.push('/my-space'); // Redirect back to the profile page or wherever appropriate
-    } catch (error) {
-      console.error('Error updating user info:', error);
-    }
-  };
+  if (!user) {
+    return <div>Loading user data...</div>;
+  }
 
   return (
     <Container>
-      <h1>Edit Profile</h1>
-      <Form onSubmit={handleSave}>
-        <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm={2}>
-            First Name
-          </Form.Label>
-          <Col sm={10}>
-            <Form.Control type="text" name="firstName" value={user.firstName} onChange={handleInputChange} />
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm={2}>
-            Last Name
-          </Form.Label>
-          <Col sm={10}>
-            <Form.Control type="text" name="lastName" value={user.lastName} onChange={handleInputChange} />
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm={2}>
-            Email
-          </Form.Label>
-          <Col sm={10}>
-            <Form.Control type="email" name="email" value={user.email} onChange={handleInputChange} />
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm={2}>
-            Profile Image
-          </Form.Label>
-          <Col sm={10}>
-            <Form.Control type="file" onChange={handleFileChange} />
-          </Col>
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Save
-        </Button>
-      </Form>
+      <h1>My Space</h1>
+      <Row className="align-items-center my-3">
+        <Col xs={12} md={4}>
+          <Image src={user.profileImageURL} roundedCircle fluid />
+        </Col>
+        <Col xs={12} md={8}>
+          <h2>{`${user.firstName} ${user.lastName}`}</h2>
+          <p>Joined: {new Date(user.dateJoined).toLocaleDateString()}</p>
+          <Button variant="primary" href="/edit-profile">Edit Profile</Button>
+        </Col>
+      </Row>
     </Container>
   );
 };
 
-export default EditProfile;
+export default MySpace;
