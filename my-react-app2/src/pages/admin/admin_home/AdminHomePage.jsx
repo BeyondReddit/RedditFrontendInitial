@@ -2,13 +2,19 @@ import React, { useState, useEffect } from 'react';
 import PostItem from '../../../components/PostItem/PostItem';
 import { getBannedPosts, getUnbannedPosts, getDeletedPosts } from './adminHomePageLogic';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure to import Bootstrap CSS
+import { useNavigate } from 'react-router-dom'; // import useNavigate
+// import PostDetail from '../../user/post_detail/PostDetail';
 
 
 const AdminHomePage = () => {
   const [bannedPosts, setBannedPosts] = useState([]);
   const [unbannedPosts, setUnbannedPosts] = useState([]);
   const [deletedPosts, setDeletedPosts] = useState([]);
+  const navigate = useNavigate(); // Hook for navigation
 
+  const navigateToPostDetail = (postId) => {
+    navigate(`/post/${postId}`);
+  };
   useEffect(() => {
     loadPosts();
   }, []);
@@ -34,7 +40,7 @@ const AdminHomePage = () => {
 
   const recoverPost = async (postId) => {
     try {
-      const token = localStorage.getItem('jwtToken');
+      const token = localStorage.getItem('token');
       if (!token) {
         throw new Error('No token found');
       };
@@ -56,7 +62,7 @@ const AdminHomePage = () => {
   };
   const banPost = async (postId) => {
     try {
-        const token = localStorage.getItem('jwtToken');
+        const token = localStorage.getItem('token');
         if (!token) {
           throw new Error('No token found');
         };
@@ -88,7 +94,7 @@ return (
               {bannedPosts.map((post) => (
                 <div className="card mb-2" key={post.postId}>
                   <div className="card-body">
-                    <PostItem post={post} onUnban={handleUnban} />
+                    <PostItem post={post} onUnban={handleUnban} onClick={navigateToPostDetail}/>
                   </div>
                 </div>
               ))}
@@ -102,7 +108,7 @@ return (
               {unbannedPosts.map((post) => (
                 <div className="card mb-2" key={post.postId}>
                   <div className="card-body">
-                    <PostItem post={post} onBan={handleBan} />
+                    <PostItem post={post} onBan={handleBan} onClick={navigateToPostDetail}/>
                   </div>
                 </div>
               ))}
@@ -116,7 +122,7 @@ return (
               {deletedPosts.map((post) => (
                 <div className="card mb-2" key={post.postId}>
                   <div className="card-body">
-                    <PostItem post={post} onRecover={handleRecover} />
+                    <PostItem post={post} onRecover={handleRecover} onClick={navigateToPostDetail}/>
                   </div>
                 </div>
               ))}
