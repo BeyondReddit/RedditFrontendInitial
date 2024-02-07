@@ -7,6 +7,9 @@ import HistoryProvider from "./HistoryProvider.tsx";
 import Top3List from "./Top3List.tsx";
 import Top3Provider from "./Top3Provider.tsx"
 
+import DraftPostList from "./DraftPostList.tsx";
+import DraftPostProvider from "./DraftPostProvider.tsx";
+
 const HistoryPage = () => {
 
 
@@ -22,6 +25,12 @@ const HistoryPage = () => {
                 <Top3Provider>
                     <Top3List/>
                 </Top3Provider>
+
+                <DraftPostProvider>
+                    <DraftPostList/>
+                </DraftPostProvider>
+
+
 
 
             </header>

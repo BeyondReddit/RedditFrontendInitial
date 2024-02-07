@@ -46,9 +46,9 @@ const UserProvider = ({ children }: IProps) => {
 
         const loadedHistorys: HistoryItem[] = [];
 
-        // Create a new Headers object and add your desired headers
+
         const headers = new Headers();
-        headers.append('Authorization', `Bearer ${token}`); // Example header, replace with your actual header
+        headers.append('Authorization', `Bearer ${token}`);
 
         fetch('http://localhost:8082/history-service/all', {
             headers: headers
