@@ -15,7 +15,7 @@ const EditProfile = ({ history }) => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:8083/users/getUserByUserId', {
+        const response = await axios.get('http://localhost:10010/users/getUserByUserId', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(response.data);
@@ -49,7 +49,7 @@ const EditProfile = ({ history }) => {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
         const token = localStorage.getItem('token');
-        await axios.post('http://localhost:8083/users/updateUserProfileImgUrl', {
+        await axios.post('http://localhost:10010/users/updateUserProfileImgUrl', {
           newUrl: uploadResponse.data.fileUri,
         }, {
           headers: { Authorization: `Bearer ${token}` },
@@ -61,7 +61,7 @@ const EditProfile = ({ history }) => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:8083/users/updateUserInfo', {
+      await axios.post('http://localhost:10010/users/updateUserInfo', {
         ...user, // Assuming the API accepts firstName, lastName, email directly
       }, {
         headers: { Authorization: `Bearer ${token}` },
