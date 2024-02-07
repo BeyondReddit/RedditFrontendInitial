@@ -167,7 +167,8 @@ const RegisterPage = () => {
 
         if (!formData.email.trim()) {
             errors.email = 'Email is required';
-        } else if (!isValidEmail(formData.email)) {
+        }
+        else if (!isValidEmail(formData.email)) {
             errors.email = 'Invalid email format';
         }
 
@@ -181,6 +182,7 @@ const RegisterPage = () => {
 
     const isValidEmail = (email) => {
         // Simple email format validation
+        // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
