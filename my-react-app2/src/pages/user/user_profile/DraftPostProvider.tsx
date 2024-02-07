@@ -11,9 +11,12 @@ interface IProps {
 }
 export interface IUserContext {
     DraftPostItems: DraftPostItem[];
+
 }
+
 export const userContext = createContext<IUserContext>({
     DraftPostItems:[]
+
 });
 
 const token = localStorage.getItem('Authorization');
@@ -22,6 +25,7 @@ const DraftPostProvider = ({ children }: IProps) => {
     const [users, setUsers] = useState([{postid:"65c198ba70823d3e2fea0bfb",title:"Nancy", status:"PUBLISHED"},
         {postid:"65c198ba70823d3e2fea0bfb",title:"Dorland", status:"PUBLISHED"},
         {postid:"65c198ba70823d3e2fea0bfb",title:"Star", status:"PUBLISHED"}]);
+
     const headers = new Headers();
     headers.append('Authorization', `Bearer ${token}`);
 
@@ -56,7 +60,7 @@ const DraftPostProvider = ({ children }: IProps) => {
 
 
 
-    const value: IUserContext = { DraftPostItems: users };
+    const value: IUserContext = { DraftPostItems: users};
     return (
         <userContext.Provider value={value}>{children}</userContext.Provider>
     );
