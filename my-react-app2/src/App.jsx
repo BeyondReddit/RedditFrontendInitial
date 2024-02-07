@@ -7,7 +7,7 @@ import VisitorHomePage from "./pages/visitor/visitor_home/VisitorHomePage.jsx";
 import AdminHomePage from "./pages/admin/admin_home/AdminHomePage.jsx";
 import UserHomePage from "./pages/user/user_home/UserHomePage.jsx";
 import { AuthProvider, useAuth } from './context/AuthContext.jsx';
-import ProfilePage from './pages/user/user_home/UserHomePage.jsx';
+import ProfilePage from './pages/user/user_home/UserProfilePage.jsx';
 import UserManagement from './pages/admin/admin_home/UserManagement.jsx';
 import EditProfile from './pages/user/user_home/EditProfile.jsx';
 

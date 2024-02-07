@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user1, setUser1] = useState(null);
     const navigate = useNavigate();
     useEffect(() => {
         // Check if a token exists in local storage during component initialization
@@ -27,15 +27,7 @@ export const AuthProvider = ({ children }) => {
                     if (response.ok) {
                         const userData = await response.json();
                         const userRole = userData.authorities;
-                        setUser(userRole);
-
-                        if (userRole === 'ADMIN') {
-                            navigate('/admin-home');
-                        } else if (userRole === 'USER') {
-                            navigate('/user-home');
-                        } else if (userRole === 'UNVERIFIED') {
-                            navigate('/unverified-home');
-                        }
+                        setUser1(userRole);
                     } else {
                         console.error('Failed to fetch current user');
                     }
@@ -68,17 +60,9 @@ export const AuthProvider = ({ children }) => {
 
                 const userRole = userData.authorities;
                 // console.log('User role:', user);
-                // console.log('User role:', userRole);
-                setUser(userRole);
+                console.log('User role:', userRole);
+                setUser1(userRole);
 
-                if (userRole === 'ADMIN') {
-                    navigate('/admin-home')
-                } else if (userRole === 'USER') {
-                    // console.log("324324")
-                    navigate('/user-home')
-                } else if (userRole === 'UNVERIFIED') {
-                    navigate('/unverified-home')
-                }
 
             } else {
                 console.error('Failed to fetch current user');
@@ -91,7 +75,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         // Clear user state and remove token from localStorage
-        setUser(null);
+        setUser1(null);
         localStorage.removeItem('Authorization');
     };
 
@@ -102,7 +86,7 @@ export const AuthProvider = ({ children }) => {
     // };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user1, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
