@@ -15,7 +15,7 @@ export default function ReplyForm({ replyType, postId, replyId }) {
       //   });
       //   console.log(myBody);
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:10010/posts/reply", {
+      const response = await fetch("http://localhost:8080/posts/reply", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export default function ReplyForm({ replyType, postId, replyId }) {
 
       // Refresh post data after successful reply submission
       // You may need to implement a way to refresh post data in your PostPage component
-
+      window.location.reload();
       // Clear the reply input field
       setReplyContent("");
     } catch (error) {
