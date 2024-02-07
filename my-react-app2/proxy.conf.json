@@ -1,0 +1,18 @@
+{
+  "/api/content/*": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/content": ""
+    },
+    "changeOrigin": true
+  },
+  "/api/auth/*": {
+    "target": "http://localhost:8081",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/auth": ""
+    },
+    "changeOrigin": true
+  }
+}
