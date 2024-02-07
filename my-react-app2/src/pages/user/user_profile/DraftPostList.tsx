@@ -72,7 +72,12 @@ const DraftPostsTable: React.FC<{ DraftPostItems: DraftPostItem[] }> = ({ DraftP
                                     {DraftPostItem.status}
                                 </td>
                                 <td>
-                                    <button onClick={() => handlePublishButtonClick(index)}>Publish</button>
+                                    <button
+                                        onClick={() => handlePublishButtonClick(index)}
+                                        className="btn btn-primary"
+                                    >
+                                        Publish
+                                    </button>
                                 </td>
                             </tr>
                         );

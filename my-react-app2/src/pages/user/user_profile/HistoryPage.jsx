@@ -28,12 +28,12 @@ const HistoryPage = () => {
                     <Top3Provider>
                         <Top3List/>
                     </Top3Provider>
-                </div>
-                <div className="component-container">
+
                     <DraftPostProvider>
                         <DraftPostList/>
                     </DraftPostProvider>
                 </div>
+
             </header>
         </div>
 
