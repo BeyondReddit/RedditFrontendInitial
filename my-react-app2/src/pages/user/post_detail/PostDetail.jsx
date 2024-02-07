@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import PostReply from "./PostReply";
 import { useParams } from "react-router-dom";
 import ReplyForm from "./ReplyForm";
@@ -11,6 +11,7 @@ function PostDetail() {
   const [show, setShow] = useState(false);
   const [userName, setUsername] = useState(null);
   const [newRep, SetNewRep] = useState(false);
+  // const [owner, SetOwner] = useState(false);
 
   const infoStyles = {
     color: "grey",
@@ -18,6 +19,31 @@ function PostDetail() {
   };
   const handleNewRep = () => {
     SetNewRep(!newRep);
+  };
+
+  const toggleArchive = async (isArchived) => {
+    let requestURL = `http://localhost:10010/posts/archive?postId=${postId}`;
+    // let requestURL = ;
+    if (isArchived) {
+      requestURL = `http://localhost:10010/posts/unarchive?postId=${postId}`;
+    }
+    const token = localStorage.getItem("token");
+    const response = await fetch(requestURL, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        // Attach the token to the request header
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      const errorResponse = await response.json();
+      alert(errorResponse.message);
+      throw new Error("Failed");
+    } else {
+      handleNewRep();
+    }
+    // console.log(requestURL);
   };
 
   const handleShow = () => {
@@ -47,19 +73,19 @@ function PostDetail() {
       );
       // const response = await fetch();
       const postData = await response.json();
-      const userResponse = await fetch(
-        `http://localhost:10010/users/getUserOnlyById/${postData.data.userId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            // Attach the token to the request header
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const userData = await userResponse.json();
-      setUsername(userData.firstName + " " + userData.lastName);
+      // const userResponse = await fetch(
+      //   `http://localhost:10010/users/getUserOnlyById/${postData.data.userId}`,
+      //   {
+      //     method: "GET",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       // Attach the token to the request header
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   }
+      // );
+      // const userData = await userResponse.json();
+      // setUsername(userData.firstName + " " + userData.lastName);
       setPost(postData.data);
       // console.log(post);
     } catch (error) {
@@ -93,6 +119,9 @@ function PostDetail() {
                   {post.archived && (
                     <Card.Text className="text-warning">Archived</Card.Text>
                   )}
+                  <Button onClick={() => toggleArchive(post.archived)}>
+                    {post.archived ? "Resume Post" : "Archive Post"}
+                  </Button>
                   <Card.Text className="text-muted" style={infoStyles}>
                     Date Created: {new Date(post.dateCreated).toLocaleString()}
                   </Card.Text>
