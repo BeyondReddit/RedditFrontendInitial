@@ -196,7 +196,7 @@ const RegisterPage = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/auth/signup', formData);
+            const response = await axios.post('http://localhost:10010/auth/signup', formData);
             console.log('Signup successful:', response.data);
             navigate('/login');
             // Handle success, redirect, or perform any other actions

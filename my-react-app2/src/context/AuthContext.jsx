@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
             // If a token exists, fetch user information and set the user state
             const fetchUser = async () => {
                 try {
-                    const response = await fetch('http://localhost:8000/auth/getCurrentUser', {
+                    const response = await fetch('http://localhost:10010/auth/getCurrentUser', {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
     const login =  async (token) => {
         // Parse the token and set the user state
         try {
-            const response = await fetch('http://localhost:8000/auth/getCurrentUser', {
+            const response = await fetch('http://localhost:10010/auth/getCurrentUser', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
