@@ -10,10 +10,13 @@ import { AuthProvider, useAuth } from './context/AuthContext.jsx';
 import ProfilePage from './pages/user/user_home/UserProfilePage.jsx';
 import UserManagement from './pages/admin/admin_home/UserManagement.jsx';
 import EditProfile from './pages/user/user_home/EditProfile.jsx';
+import HistoryPage from "./pages/user/user_profile/HistoryPage.jsx";
+
 
 const App = () => {
     return (
         <Router>
+
             <AuthProvider>
                 <Header />
                 <Routes>
@@ -25,8 +28,12 @@ const App = () => {
                     <Route path="/editprofile" element={<EditProfile />} />
                     <Route path="/userprofilepage" element={<ProfilePage />} />
                     <Route path="/usermanagement" element={<UserManagement />} />
+                    <Route path="/historyall" element={<HistoryPage />} />
                 </Routes>
             </AuthProvider>
+
+
+
         </Router>
     );
 };

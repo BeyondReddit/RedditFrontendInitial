@@ -13,6 +13,7 @@ const Header = () => {
     };
 
     return (
+
         <Navbar bg="dark" variant="dark" className="header">
             <Container>
                 <Navbar.Brand as={Link} to="/">Your Forum App</Navbar.Brand>
