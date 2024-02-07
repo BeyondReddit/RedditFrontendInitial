@@ -7,6 +7,7 @@ import { MDBBtn, MDBContainer, MDBCard, MDBCardBody, MDBCardImage, MDBRow, MDBCo
 import './LoginPage.css';
 import {Container, Form} from "react-bootstrap"; // Import your custom CSS file
 
+
 const LoginPage = () => {
     const { login } = useAuth();
     const [loginData, setLoginData] = useState({
@@ -18,6 +19,7 @@ const LoginPage = () => {
     const [showError, setShowError] = useState(false);
     const [unauthorizedError, setUnauthorizedError] = useState(false);
     const navigate = useNavigate();
+    const { user1 } = useAuth();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -88,9 +90,18 @@ const LoginPage = () => {
 
                 // Store the token in local storage
                 localStorage.setItem('Authorization', token);
-
-                // Call the login function to set the user state and save the token
                 login(token);
+
+                console.log("0000", user1);
+                if (user1 === 'ADMIN') {
+                    navigate('/admin-home');
+                } else if (user1 === 'USER') {
+                    navigate('/user-home');
+                } else if (user1 === 'UNVERIFIED') {
+                    navigate('/unverified-home');
+                }
+
+
             }
         } catch (error) {
             console.error('Login failed:', error.message);

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {useAuth} from "../../../context/AuthContext.jsx";
+import {useNavigate} from "react-router-dom"; // Import Bootstrap CSS
 
 const EditProfile = () => {
   const [user, setUser] = useState({
@@ -11,6 +13,17 @@ const EditProfile = () => {
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const [changesMade, setChangesMade] = useState(false);
+  const { user1 } = useAuth();
+  const navigate = useNavigate();
+  console.log("user66666"+ user1);
+  //
+  // useEffect(() => {
+  //   // Redirect to login if user is not authenticated or not a user
+  //   if (!user1 || user1 !== 'USER') {
+  //     navigate('/login');
+  //   }
+  // }, [user1, navigate]);
+
 
   useEffect(() => {
     const fetchUserDetails = async () => {

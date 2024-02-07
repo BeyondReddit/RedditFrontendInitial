@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 const Header = () => {
-    const { user, logout } = useAuth();
+    const { user1, logout } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -17,10 +17,10 @@ const Header = () => {
             <Container>
                 <Navbar.Brand as={Link} to="/">Your Forum App</Navbar.Brand>
                 <Nav className="me-auto">
-                    {user ? (
+                    {user1 ? (
                         <>
-                            {user === 'ADMIN' && <Nav.Link as={Link} to="/admin-home">Admin Home</Nav.Link>}
-                            {user === 'USER' && <Nav.Link as={Link} to="/user-home">User Home</Nav.Link>}
+                            {user1 === 'ADMIN' && <Nav.Link as={Link} to="/admin-home">Admin Home</Nav.Link>}
+                            {user1 === 'USER' && <Nav.Link as={Link} to="/user-home">User Home</Nav.Link>}
                         </>
                     ) : (
                         <Nav.Link as={Link} to="/visitor-home">Visitor Home</Nav.Link>
@@ -28,7 +28,7 @@ const Header = () => {
                     <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
                 </Nav>
                 <Nav>
-                    {!user ? (
+                    {!user1 ? (
                         <>
                             <Nav.Link as={Link} to="/login">Login</Nav.Link>
                             <Nav.Link as={Link} to="/register">Register</Nav.Link>
