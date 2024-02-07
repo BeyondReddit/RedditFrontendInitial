@@ -12,12 +12,12 @@ function PostDetail() {
   useEffect(() => {
     fetchPost();
   }, []);
-  
+
   const fetchPost = async () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:8079/posts?postId=${postId}`,
+        `http://localhost:10010/posts?postId=${postId}`,
         {
           method: "GET",
           headers: {

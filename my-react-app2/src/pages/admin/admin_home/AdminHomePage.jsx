@@ -44,7 +44,7 @@ const AdminHomePage = () => {
       if (!token) {
         throw new Error('No token found');
       };
-      const response = await fetch(`http://localhost:8079/posts/publish?postId=${postId}`, {
+      const response = await fetch(`http://localhost:10010/posts/publish?postId=${postId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const AdminHomePage = () => {
         if (!token) {
           throw new Error('No token found');
         };
-      const response = await fetch(`http://localhost:8079/posts/ban?postId=${postId}`, {
+      const response = await fetch(`http://localhost:10010/posts/ban?postId=${postId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

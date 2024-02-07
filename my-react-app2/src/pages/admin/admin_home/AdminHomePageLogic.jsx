@@ -25,7 +25,7 @@ const fetchWithAuth = async (url) => {
   };
 
 export const getBannedPosts = async (token) => {
-    const response = await fetchWithAuth('http://localhost:8079/posts/banned');
+    const response = await fetchWithAuth('http://localhost:10010/posts/banned');
     if(response && response.data) {
       return response.data;
     } else {
@@ -34,7 +34,7 @@ export const getBannedPosts = async (token) => {
   };
   
   export const getUnbannedPosts = async (token) => {
-    const response = await fetchWithAuth('http://localhost:8079/posts/published');
+    const response = await fetchWithAuth('http://localhost:10010/posts/published');
     if(response && response.data) {
       return response.data;
     } else {
@@ -43,7 +43,7 @@ export const getBannedPosts = async (token) => {
   };
   
 export const getDeletedPosts = async () => {
-    const response = await fetchWithAuth('http://localhost:8079/posts/deleted');
+    const response = await fetchWithAuth('http://localhost:10010/posts/deleted');
     if(response && response.data) {
       return response.data;
     } else {
