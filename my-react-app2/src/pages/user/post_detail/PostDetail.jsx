@@ -17,7 +17,7 @@ function PostDetail() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:8080/posts?postId=${postId}`,
+        `http://localhost:10010/posts?postId=${postId}`,
         {
           method: "GET",
           headers: {

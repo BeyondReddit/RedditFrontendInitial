@@ -15,7 +15,7 @@ export default function ReplyForm({ replyType, postId, replyId }) {
       //   });
       //   console.log(myBody);
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:8080/posts/reply", {
+      const response = await fetch("http://localhost:10010/posts/reply", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
