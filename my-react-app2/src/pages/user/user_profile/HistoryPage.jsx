@@ -10,6 +10,8 @@ import Top3Provider from "./Top3Provider.tsx"
 import DraftPostList from "./DraftPostList.tsx";
 import DraftPostProvider from "./DraftPostProvider.tsx";
 
+import './HistoryPage.css';
+
 const HistoryPage = () => {
 
 
@@ -17,22 +19,21 @@ const HistoryPage = () => {
 
         <div className="App">
             <header className="App-header">
-
-                <HistoryProvider>
-                    <HistoryList />
-                </HistoryProvider>
-
-                <Top3Provider>
-                    <Top3List/>
-                </Top3Provider>
-
-                <DraftPostProvider>
-                    <DraftPostList/>
-                </DraftPostProvider>
-
-
-
-
+                <div className="component-container">
+                    <HistoryProvider>
+                        <HistoryList />
+                    </HistoryProvider>
+                </div>
+                <div className="component-container">
+                    <Top3Provider>
+                        <Top3List/>
+                    </Top3Provider>
+                </div>
+                <div className="component-container">
+                    <DraftPostProvider>
+                        <DraftPostList/>
+                    </DraftPostProvider>
+                </div>
             </header>
         </div>
 
