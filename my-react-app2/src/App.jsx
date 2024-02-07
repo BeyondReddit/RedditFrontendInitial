@@ -8,25 +8,8 @@ import AdminHomePage from "./pages/admin/admin_home/AdminHomePage.jsx";
 import UserHomePage from "./pages/user/user_home/UserHomePage.jsx";
 import { AuthProvider, useAuth } from './context/AuthContext.jsx';
 
-const App = () => {
-    // useEffect(() => {
-    //     // Redirect to the appropriate page based on authentication status
-    //     if (user) {
-    //         if (user === 'ADMIN') {
-    //             // Use the Navigate component here
-    //             window.location.href = "/admin-home";
-    //         } else if (user === 'USER') {
-    //             // Use the Navigate component here
-    //             window.location.href = "/user-home";
-    //         } else if (user === 'UNVERIFIED') {
-    //             // Use the Navigate component here
-    //             window.location.href = "/unverified-home";
-    //         }
-    //     } else {
-    //         window.location.href = "/login"
-    //     }
-    // }, [user]);
 
+const App = () => {
     return (
         <Router>
             <AuthProvider>

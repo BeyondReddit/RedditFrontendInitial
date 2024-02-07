@@ -1,141 +1,17 @@
-// import React, { useState } from 'react';
-// import axios from 'axios';
-//
-//     const RegisterPage = () => {
-//         const [formData, setFormData] = useState({
-//             firstName: '',
-//             lastName: '',
-//             email: '',
-//             password: '',
-//         });
-//
-//         const [errors, setErrors] = useState({});
-//
-//         const handleChange = (e) => {
-//             const { name, value } = e.target;
-//             setFormData({ ...formData, [name]: value });
-//         };
-//
-//         const validateForm = () => {
-//             const errors = {};
-//
-//             // Check for not-empty
-//             if (!formData.firstName.trim()) {
-//                 errors.firstName = 'First Name is required';
-//             }
-//
-//             if (!formData.lastName.trim()) {
-//                 errors.lastName = 'Last Name is required';
-//             }
-//
-//             if (!formData.email.trim()) {
-//                 errors.email = 'Email is required';
-//             } else if (!isValidEmail(formData.email)) {
-//                 errors.email = 'Invalid email format';
-//             }
-//
-//             if (!formData.password.trim()) {
-//                 errors.password = 'Password is required';
-//             }
-//
-//             setErrors(errors);
-//             return Object.keys(errors).length === 0; // Return true if no errors
-//         };
-//
-//         const isValidEmail = (email) => {
-//             // Simple email format validation
-//             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//             return emailRegex.test(email);
-//         };
-//
-//         const handleSignup = async (e) => {
-//             e.preventDefault();
-//
-//             if (!validateForm()) {
-//                 // If form validation fails, do not proceed with signup
-//                 return;
-//             }
-//
-//             try {
-//                 const response = await axios.post('http://localhost:8000/auth/signup', formData);
-//                 console.log('Signup successful:', response.data);
-//                 // Handle success, redirect, or perform any other actions
-//             } catch (error) {
-//                 console.error('Signup failed:', error.message);
-//                 // Handle error, display an error message, etc.
-//             }
-//         };
-//
-//         return (
-//             <form onSubmit={handleSignup}>
-//                 <div>
-//                     <label>
-//                         First Name:
-//                         <input
-//                             type="text"
-//                             name="firstName"
-//                             value={formData.firstName}
-//                             onChange={handleChange}
-//                             required
-//                         />
-//                     </label>
-//                     <span>{errors.firstName}</span>
-//                 </div>
-//                 <br />
-//                 <div>
-//                     <label>
-//                         Last Name:
-//                         <input
-//                             type="text"
-//                             name="lastName"
-//                             value={formData.lastName}
-//                             onChange={handleChange}
-//                             required
-//                         />
-//                     </label>
-//                     <span>{errors.lastName}</span>
-//                 </div>
-//                 <br />
-//                 <div>
-//                     <label>
-//                         Email:
-//                         <input
-//                             type="email"
-//                             name="email"
-//                             value={formData.email}
-//                             onChange={handleChange}
-//                             required
-//                         />
-//                     </label>
-//                     <span>{errors.email}</span>
-//                 </div>
-//                 <br />
-//                 <div>
-//                     <label>
-//                         Password:
-//                         <input
-//                             type="password"
-//                             name="password"
-//                             value={formData.password}
-//                             onChange={handleChange}
-//                             required
-//                         />
-//                     </label>
-//                     <span>{errors.password}</span>
-//                 </div>
-//                 <br />
-//                 <button type="submit">Signup</button>
-//             </form>
-//         );
-//     };
-//
-// export default RegisterPage;
-//
-//
+
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {
+    MDBBtn,
+    MDBContainer,
+    MDBCard,
+    MDBCardBody,
+    MDBInput,
+    MDBCheckbox
+} from 'mdb-react-ui-kit';
+import './RegisterPage.css'
 
 const RegisterPage = () => {
     const navigate = useNavigate();
@@ -147,10 +23,15 @@ const RegisterPage = () => {
     });
 
     const [errors, setErrors] = useState({});
+    const [agreedToTerms, setAgreedToTerms] = useState(false);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+    };
+    const handleCheckboxChange = () => {
+        setAgreedToTerms(!agreedToTerms);
     };
 
     const validateForm = () => {
@@ -174,6 +55,9 @@ const RegisterPage = () => {
 
         if (!formData.password.trim()) {
             errors.password = 'Password is required';
+        }
+        if (!agreedToTerms) {
+            errors.terms = 'You must agree to the Terms of Service';
         }
 
         setErrors(errors);
@@ -212,67 +96,50 @@ const RegisterPage = () => {
             }
         }
     };
-
     return (
-        <Container>
-            <Row className="justify-content-md-center">
-                <Col md="6">
-                    <Form onSubmit={handleSignup}>
-                        <Form.Group>
-                            <Form.Label>First Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="firstName"
-                                value={formData.firstName}
-                                onChange={handleChange}
-                                required
-                            />
-                            <Form.Text className="text-danger">{errors.firstName}</Form.Text>
-                        </Form.Group>
+        <MDBContainer fluid className='d-flex align-items-center justify-content-center bg-image' style={{ backgroundImage: 'url(https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp)' }}>
+            <div className='mask gradient-custom-3'></div>
+            <MDBCard className='m-5' style={{ maxWidth: '600px' }}>
+                <MDBCardBody className='px-5'>
+                    <h2 className="text-uppercase text-center mb-5">Create an account</h2>
 
-                        <Form.Group>
-                            <Form.Label>Last Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="lastName"
-                                value={formData.lastName}
-                                onChange={handleChange}
-                                required
-                            />
-                            <Form.Text className="text-danger">{errors.lastName}</Form.Text>
-                        </Form.Group>
+                    {/* Controlled components with value and onChange */}
+                    <div className='mb-4'>
+                        <label htmlFor='form1' className='form-label'>First Name</label>
+                        <MDBInput size='lg' id='form1' type='text' name='firstName' value={formData.firstName} onChange={handleChange} />
+                        {errors.firstName && <Form.Text className="text-danger">{errors.firstName}</Form.Text>}
+                    </div>
 
-                        <Form.Group>
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                            />
-                            <Form.Text className="text-danger">{errors.email}</Form.Text>
-                        </Form.Group>
+                    <div className='mb-4'>
+                        <label htmlFor='form2' className='form-label'>Last Name</label>
+                        <MDBInput size='lg' id='form2' type='text' name='lastName' value={formData.lastName} onChange={handleChange} />
+                        {errors.lastName && <Form.Text className="text-danger">{errors.lastName}</Form.Text>}
+                    </div>
 
-                        <Form.Group>
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control
-                                type="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                required
-                            />
-                            <Form.Text className="text-danger">{errors.password}</Form.Text>
-                        </Form.Group>
+                    <div className='mb-4'>
+                        <label htmlFor='form3' className='form-label'>Email</label>
+                        <MDBInput size='lg' id='form3' type='email' name='email' value={formData.email} onChange={handleChange} />
+                        {errors.email && <Form.Text className="text-danger">{errors.email}</Form.Text>}
+                    </div>
 
-                        <Button variant="primary" type="submit">
-                            Signup
-                        </Button>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
+                    <div className='mb-4'>
+                        <label htmlFor='form4' className='form-label'>Password</label>
+                        <MDBInput size='lg' id='form4' type='password' name='password' value={formData.password} onChange={handleChange} />
+                        {errors.password && <Form.Text className="text-danger">{errors.password}</Form.Text>}
+                    </div>
+
+                    <div className='mb-4'>
+                        <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I agree to all statements in Terms of service' onChange={handleCheckboxChange} />
+                        {errors.terms && <span className="text-danger">{errors.terms}</span>}
+                    </div>
+
+                    {/* Submit button with onClick event handler */}
+                    <MDBBtn className='mb-4 w-100 gradient-custom-4' size='lg' onClick={handleSignup}>
+                        Register
+                    </MDBBtn>
+                </MDBCardBody>
+            </MDBCard>
+        </MDBContainer>
     );
 };
 
