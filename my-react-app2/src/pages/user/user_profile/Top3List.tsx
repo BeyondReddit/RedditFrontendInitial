@@ -1,36 +1,34 @@
 import { useContext } from 'react';
-import { userContext, IUserContext } from './HistoryProvider';
+import { userContext, IUserContext } from './Top3Provider';
 import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-const HistoryList = () => {
-    const {HistoryItems } =
+const Top3List = () => {
+    const {Top3Items } =
         useContext<IUserContext>(userContext);
 
     return (
         <>
-            <h2>History list</h2>
+            <h2>Top 3 posts</h2>
 
             <table className="table">
                 <thead>
                 <tr>
                     <th>post title</th>
-                    <th>View Date</th>
                 </tr>
                 </thead>
                 <tbody>
-                {HistoryItems.map((HistoryItem, index) => (
+                {Top3Items.map((Top3Item, index) => (
                     <tr key={index}>
                         <td>
                             <li>
-                                <Link to={`/post/${HistoryItem.postid}`}>{HistoryItem.posttitle}</Link>
+                                <Link to={`/post/${Top3Item.postid}`}>{Top3Item.title}</Link>
                             </li>
                         </td>
 
 
-                        <td>{HistoryItem.viewdate}</td>
+
                     </tr>
                 ))}
                 </tbody>
@@ -39,4 +37,4 @@ const HistoryList = () => {
     );
 };
 
-export default HistoryList;
+export default Top3List;
