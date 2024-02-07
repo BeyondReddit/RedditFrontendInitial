@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-export default function ReplyForm({ replyType, postId, replyId }) {
+export default function ReplyForm({ replyType, postId, replyId, onNewRep }) {
   const [showReplyForm, setShowReplyForm] = useState(false);
   const [replyContent, setReplyContent] = useState("");
 
@@ -14,8 +14,17 @@ export default function ReplyForm({ replyType, postId, replyId }) {
       //     comment: replyContent,
       //   });
       //   console.log(myBody);
+      // console.log(replyType);
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:8080/posts/reply", {
+      let fetchUrl;
+      const REPLY_URL = "http://localhost:8080/posts/reply";
+      const SUBREPLY_URL = "http://localhost:8080/posts/subreply";
+      if (replyType == "Reply") {
+        fetchUrl = REPLY_URL;
+      } else {
+        fetchUrl = SUBREPLY_URL;
+      }
+      const response = await fetch(fetchUrl, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -29,16 +38,18 @@ export default function ReplyForm({ replyType, postId, replyId }) {
       });
 
       if (!response.ok) {
-        console.log(response);
-        alert(response.message);
+        const errorResponse = await response.json();
+        alert(errorResponse.message);
         throw new Error("Failed to add reply");
       }
 
       // Refresh post data after successful reply submission
       // You may need to implement a way to refresh post data in your PostPage component
-      window.location.reload();
+      // window.location.reload();
+      onNewRep();
       // Clear the reply input field
       setReplyContent("");
+      setShowReplyForm(false);
     } catch (error) {
       console.error("Error adding reply:", error);
     }
