@@ -25,7 +25,7 @@ const Top3Provider = ({ children }: IProps) => {
 
 
     useEffect(() => {
-        fetch('http://localhost:8080/posts/top')
+        fetch('http://localhost:10010/posts/top')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch top 3 posts');

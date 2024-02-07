@@ -20,7 +20,7 @@ const DraftPostsTable: React.FC<{ DraftPostItems: DraftPostItem[] }> = ({ DraftP
     headers.append('Authorization', `Bearer ${token}`);
 
     const publishPost = (postId: string) => {
-        return fetch(`http://localhost:8080/posts/publish?postId=${postId}`, {
+        return fetch(`http://localhost:10010/posts/publish?postId=${postId}`, {
             method: 'PATCH',
             headers: headers
         })

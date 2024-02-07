@@ -50,7 +50,7 @@ const UserProvider = ({ children }: IProps) => {
         const headers = new Headers();
         headers.append('Authorization', `Bearer ${token}`);
 
-        fetch('http://localhost:8082/history-service/all', {
+        fetch('http://localhost:10010/history-service/all', {
             headers: headers
         })
             .then((response) => response.json())
