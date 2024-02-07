@@ -35,7 +35,7 @@ function PostDetail() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:8080/posts?postId=${postId}`,
+        `http://localhost:10010/posts?postId=${postId}`,
         {
           method: "GET",
           headers: {
@@ -47,19 +47,19 @@ function PostDetail() {
       );
       // const response = await fetch();
       const postData = await response.json();
-      //   const userResponse = await fetch(
-      //     `http://localhost:8083/users/getUserOnlyById/${postData.data.userId}`,
-      //     {
-      //       method: "GET",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //         // Attach the token to the request header
-      //         Authorization: `Bearer ${token}`,
-      //       },
-      //     }
-      //   );
-      //   const userData = await userResponse.json();
-      //   setUsername(userData.firstName + " " + userData.lastName);
+      const userResponse = await fetch(
+        `http://localhost:10010/users/getUserOnlyById/${postData.data.userId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            // Attach the token to the request header
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const userData = await userResponse.json();
+      setUsername(userData.firstName + " " + userData.lastName);
       setPost(postData.data);
       // console.log(post);
     } catch (error) {
@@ -79,6 +79,7 @@ function PostDetail() {
                 content={post.content}
                 onCloseShow={handleClose}
                 postId={post.postId}
+                onNewRep={handleNewRep}
               />
               <Card>
                 <Card.Body>

@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-function EditModal({ postId, title, content, onCloseShow, show }) {
+function EditModal({ postId, title, content, onCloseShow, show, onNewRep }) {
   const [postTitle, setPostTitle] = useState(title);
   const [postContent, setPostContent] = useState(content);
 
@@ -19,7 +19,7 @@ function EditModal({ postId, title, content, onCloseShow, show }) {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:8080/posts/edit?postId=${postId}`,
+        `http://localhost:10010/posts/edit?postId=${postId}`,
         {
           method: "PATCH",
           headers: {
@@ -32,6 +32,7 @@ function EditModal({ postId, title, content, onCloseShow, show }) {
 
       if (response.ok) {
         // console.log("Post updated successfully");
+        onNewRep();
       } else {
         console.error("Failed to update post");
         const responseData = await response.json();

@@ -17,8 +17,8 @@ export default function ReplyForm({ replyType, postId, replyId, onNewRep }) {
       // console.log(replyType);
       const token = localStorage.getItem("token");
       let fetchUrl;
-      const REPLY_URL = "http://localhost:8080/posts/reply";
-      const SUBREPLY_URL = "http://localhost:8080/posts/subreply";
+      const REPLY_URL = "http://localhost:10010/posts/reply";
+      const SUBREPLY_URL = "http://localhost:10010/posts/subreply";
       if (replyType == "Reply") {
         fetchUrl = REPLY_URL;
       } else {
