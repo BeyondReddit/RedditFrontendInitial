@@ -14,7 +14,7 @@ const UserManagement = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('Authorization'); // Retrieve token from local storage
-      const response = await axios.get('http://localhost:8083/users/getAllUsers', {
+      const response = await axios.get('http://localhost:10010/users/getAllUsers', {
         headers: {
           Authorization: `Bearer ${token}` // Use the token in the Authorization header
         }
@@ -34,7 +34,7 @@ const UserManagement = () => {
   const updateUserActiveStatus = async (userId, isActive) => {
     try {
       const token = localStorage.getItem('Authorization'); // Retrieve token from local storage
-      await axios.post('http://localhost:8083/users/updateUserActive', {
+      await axios.post('http://localhost:10010/users/updateUserActive', {
         userId,
         active: isActive,
       }, {
@@ -51,7 +51,7 @@ const UserManagement = () => {
   const updateUserType = async (userId, newType) => {
     try {
       const token = localStorage.getItem('Authorization'); // Retrieve token from local storage
-      await axios.post('http://localhost:8083/users/updateUserType', {
+      await axios.post('http://localhost:10010/users/updateUserType', {
         userId,
         newType,
       }, {

@@ -16,7 +16,7 @@ const EditProfile = () => {
     const fetchUserDetails = async () => {
       try {
         const token = localStorage.getItem('Authorization');
-        const response = await axios.get('http://localhost:8083/users/getUserByUserId', {
+        const response = await axios.get('http://localhost:10010/users/getUserByUserId', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -85,7 +85,7 @@ const saveProfile = async () => {
     if (changesMade || profileUpdated) {
       try {
         const token = localStorage.getItem('Authorization');
-        await axios.post('http://localhost:8083/users/updateUserInfo', {
+        await axios.post('http://localhost:10010/users/updateUserInfo', {
           ...user,
           userId: JSON.parse(localStorage.getItem('user')).userId,
         }, {

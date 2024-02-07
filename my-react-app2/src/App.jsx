@@ -2,10 +2,10 @@
 import React from 'react';
 
 import Header from "./components/header/Header.jsx";
-import LoginPage from './pages/login/LoginPage.jsx';
-import RegisterPage from './pages/register/RegisterPage.jsx';
+import LoginPage from './pages/login/EditProfile.jsx';
+import RegisterPage from './pages/register/UserInfo.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import VisitorHomePage from "./pages/visitor/visitor_home/VisitorHomePage.jsx";
+import VisitorHomePage from "./pages/visitor/visitor_home/UserManagement.jsx";
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

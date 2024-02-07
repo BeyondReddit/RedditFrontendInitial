@@ -10,7 +10,7 @@ const MySpace = () => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem('Authorization'); // Retrieve token from local storage
-        const response = await axios.get('http://localhost:8083/users/getUserByUserId', {
+        const response = await axios.get('http://localhost:10010/users/getUserByUserId', {
           headers: {
             Authorization: `Bearer ${token}`, // Use the token in the Authorization header
           },
@@ -24,6 +24,7 @@ const MySpace = () => {
 
     fetchUser();
   }, []);
+  console.log(user);
 
   if (!user) {
     return <div>Loading user data...</div>;
