@@ -46,7 +46,7 @@ function PostDetail() {
     // console.log(requestURL);
   };
 
-  const deletePost = async (isArchived) => {
+  const deletePost = async () => {
     const requestURL = `http://localhost:10010/posts/delete?postId=${postId}`;
     const token = localStorage.getItem("Authorization");
     const response = await fetch(requestURL, {
@@ -167,7 +167,7 @@ function PostDetail() {
                     {post.archived ? "Resume Post" : "Archive Post"}
                   </Button>
                   {post.status !== "DELETED" && (
-                    <Button onClick={() => deletePost}>Delete Post</Button>
+                    <Button onClick={() => deletePost()}>Delete Post</Button>
                   )}
                   {post.status !== "HIDDEN" && (
                     <Button onClick={() => toggleHidePost(false)}>
