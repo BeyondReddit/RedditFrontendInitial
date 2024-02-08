@@ -1,6 +1,6 @@
 
 // LoginPage.jsx
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { MDBBtn, MDBContainer, MDBCard, MDBCardBody, MDBCardImage, MDBRow, MDBCol, MDBIcon, MDBInput } from 'mdb-react-ui-kit';
@@ -20,6 +20,16 @@ const LoginPage = () => {
     const [unauthorizedError, setUnauthorizedError] = useState(false);
     const navigate = useNavigate();
     const { user1 } = useAuth();
+    useEffect(() => {
+        // Watch for changes in user1 state and navigate accordingly
+        if (user1 === 'ADMIN') {
+            navigate('/admin-home');
+        } else if (user1 === 'USER') {
+            navigate('/user-home');
+        } else if (user1 === 'UNVERIFIED') {
+            navigate('/unverified-home');
+        }
+    }, [user1]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -90,18 +100,7 @@ const LoginPage = () => {
 
                 // Store the token in local storage
                 localStorage.setItem('Authorization', token);
-                login(token);
-
-                console.log("0000", user1);
-                if (user1 === 'ADMIN') {
-                    navigate('/admin-home');
-                } else if (user1 === 'USER') {
-                    navigate('/user-home');
-                } else if (user1 === 'UNVERIFIED') {
-                    navigate('/unverified-home');
-                }
-
-
+                await login(token);
             }
         } catch (error) {
             console.error('Login failed:', error.message);
