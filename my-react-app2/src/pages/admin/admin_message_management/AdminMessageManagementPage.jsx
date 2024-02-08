@@ -14,6 +14,7 @@ function MessageManagementPage() {
             const response = await axios.get('http://localhost:10010/messages/all', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('Authorization')}` },
             });
+            console.log(response);
             setMessages(response.data.messages); // Assuming the response has a `messages` array
         } catch (error) {
             console.error('Failed to fetch messages:', error);
@@ -21,7 +22,9 @@ function MessageManagementPage() {
     };
 
     const toggleMessageStatus = async (messageId, isClosed) => {
+        console.log(isClosed);
         const endpoint = isClosed ? `/messages/${messageId}/open` : `/messages/${messageId}/close`;
+        console.log(endpoint);
         try {
             await axios.patch(`http://localhost:10010${endpoint}`, {}, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('Authorization')}` },
@@ -38,24 +41,26 @@ function MessageManagementPage() {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Date Created</th>
                         <th>Subject</th>
-                        <th>Email</th>
+                        <th>Email Address</th>
+                        <th>Message</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {messages.map((message) => (
-                        <tr key={message.id}>
-                            <td>{message.id}</td>
+                        <tr>
+                            <td>{message.dateCreated}</td>
                             <td>{message.subject}</td>
                             <td>{message.email}</td>
+                            <td>{message.message}</td>
                             <td>{message.status}</td>
                             <td>
                                 <Button 
                                     variant={message.status === 'open' ? "secondary" : "primary"} 
-                                    onClick={() => toggleMessageStatus(message.id, message.status === 'open')}
+                                    onClick={() => toggleMessageStatus(message.userId, !(message.status === 'open'))}
                                 >
                                     {message.status === 'open' ? "Close" : "Open"}
                                 </Button>
