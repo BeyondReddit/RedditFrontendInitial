@@ -2,9 +2,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import { useNavigate } from 'react-router-dom';
+import HistoryPage from "../user_profile/HistoryPage.jsx";
 
 const MySpace = () => {
     const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+    const toOther= () => {
+        navigate('/historyall');
+
+    }
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -32,6 +39,8 @@ const MySpace = () => {
     return (
         <Container>
             <h1>My Space</h1>
+            {/*<button onClick={toOther}>click</button>*/}
+            <HistoryPage/>
             <Row className="align-items-center my-3">
                 <Col xs={12} md={4}>
                     <Image src={user.profileImageURL} roundedCircle fluid />
