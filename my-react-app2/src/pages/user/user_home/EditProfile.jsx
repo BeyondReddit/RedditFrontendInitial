@@ -10,6 +10,8 @@ const EditProfile = () => {
     firstName: '',
     lastName: '',
     newEmail: '',
+    userId: '',
+    newUrl: '',
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const [changesMade, setChangesMade] = useState(false);
@@ -61,12 +63,14 @@ const EditProfile = () => {
     formData.append('file', selectedFile);
 
     try {
+      const token = localStorage.getItem('Authorization');
       const uploadResponse = await axios.post('http://localhost:10010/files/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
         },
       });
-      return uploadResponse.data.fileUri;
+      return uploadResponse.data;
     } catch (error) {
       console.error('Error uploading file:', error);
     }
@@ -78,6 +82,8 @@ const saveProfile = async () => {
     // Check if a new file has been selected for upload
     if (selectedFile) {
       const newUrl = await uploadImage();
+      console.log('newUrl', newUrl);
+      localStorage.setItem('newUrl', newUrl);
       // If a new image was successfully uploaded, update the profile image URL
       if (newUrl) {
         try {
@@ -100,7 +106,8 @@ const saveProfile = async () => {
         const token = localStorage.getItem('Authorization');
         await axios.post('http://localhost:10010/users/updateUserInfo', {
           ...user,
-          userId: JSON.parse(localStorage.getItem('user')).userId,
+          // userId: JSON.parse(localStorage.getItem('user')).userId,
+          userId: user.userId,
         }, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -108,9 +115,10 @@ const saveProfile = async () => {
         });
   
         // Optionally, update the user in local storage if needed
-        localStorage.setItem('user', JSON.stringify({ ...user, profileImageURL: profileUpdated ? newUrl : user.profileImageURL }));
-  
-        window.location.href = '/edit-profile'; // Redirect or refresh
+        localStorage.setItem('user', JSON.stringify({ ...user, profileImageURL: profileUpdated ? localStorage.getItem('newUrl') : user.profileImageURL }));
+        localStorage.removeItem('newUrl'); // Remove the temporary new URL from local storage
+        localStorage.removeItem('user'); 
+        window.location.href = '/userprofilepage'; // Redirect or refresh
       } catch (error) {
         console.error('Error saving profile:', error);
       }

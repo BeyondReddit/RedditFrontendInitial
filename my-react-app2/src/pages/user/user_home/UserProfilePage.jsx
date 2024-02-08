@@ -48,7 +48,7 @@ const MySpace = () => {
                 <Col xs={12} md={8}>
                     <h2>{`${user.firstName} ${user.lastName}`}</h2>
                     <p>Joined: {new Date(user.dateJoined).toLocaleDateString()}</p>
-                    <Button variant="primary" href="/edit-profile">Edit Profile</Button>
+                    <Button variant="primary" href="/editprofile">Edit Profile</Button>
                 </Col>
             </Row>
         </Container>
