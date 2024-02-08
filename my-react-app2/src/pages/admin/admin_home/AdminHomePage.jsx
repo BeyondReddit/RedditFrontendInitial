@@ -5,7 +5,8 @@ import React, { useState, useEffect } from 'react';
 import PostItem from '../../../components/PostItem/PostItem';
 import { getBannedPosts, getUnbannedPosts, getDeletedPosts } from './adminHomePageLogic';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure to import Bootstrap CSS
-import { useNavigate } from 'react-router-dom'; // import useNavigate
+import { useNavigate } from 'react-router-dom';
+import {Button} from "react-bootstrap"; // import useNavigate
 // import PostDetail from '../../user/post_detail/PostDetail';
 
 
@@ -108,11 +109,9 @@ const AdminHomePage = () => {
 return (
   
     <div className="container mt-3">
-        <div>
-            <h2>AdminHomePage</h2>
-            <button onClick={toOther}>To User Management</button>
-            <button onClick={toMessageManagement}>To Message Management</button>
-        </div>
+      <Button onClick={toOther} className="border-2" >To User Management</Button>
+      <Button onClick={toMessageManagement} className="border-2">To Message Management</Button>
+      <hr />
       <div className="row">
         <div className="col">
           <div className="card">
