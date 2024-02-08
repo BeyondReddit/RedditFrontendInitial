@@ -61,7 +61,7 @@ const isValidEmail = (email) => {
 
     try {
         const token = localStorage.getItem('Authorization') || 'Guest'; // Make sure this matches how you've saved the token
-        await axios.post('http://localhost:8081/messages', formData, {
+        await axios.post('http://localhost:10010/messages', formData, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': token !== 'Guest' ? `Bearer ${token}` : undefined, // Add the token to your request headers

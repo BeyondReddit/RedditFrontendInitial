@@ -26,7 +26,7 @@ const Header = () => {
                     ) : (
                         <Nav.Link as={Link} to="/visitor-home">Visitor Home</Nav.Link>
                     )}
-                    <Nav.Link as={Link} to="/contactus">Contact</Nav.Link>
+                    <Nav.Link as={Link} to="/contactus">Contact </Nav.Link>
                 </Nav>
                 <Nav>
                     {!user1 ? (

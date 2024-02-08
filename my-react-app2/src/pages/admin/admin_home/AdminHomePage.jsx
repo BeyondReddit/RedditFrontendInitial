@@ -21,6 +21,9 @@ const AdminHomePage = () => {
       navigate('/usermanagement');
 
   }
+  const toMessageManagement= () => {
+      navigate('/messages');
+  }
 
   useEffect(() => {
     // Redirect to login if user is not authenticated or not a user
@@ -107,7 +110,8 @@ return (
     <div className="container mt-3">
         <div>
             <h2>AdminHomePage</h2>
-            <button onClick={toOther}>click</button>
+            <button onClick={toOther}>To User Management</button>
+            <button onClick={toMessageManagement}>To Message Management</button>
         </div>
       <div className="row">
         <div className="col">

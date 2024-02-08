@@ -11,7 +11,7 @@ function MessageManagementPage() {
 
     const fetchMessages = async () => {
         try {
-            const response = await axios.get('http://localhost:8081/messages/all', {
+            const response = await axios.get('http://localhost:10010/messages/all', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('Authorization')}` },
             });
             setMessages(response.data.messages); // Assuming the response has a `messages` array
@@ -23,7 +23,7 @@ function MessageManagementPage() {
     const toggleMessageStatus = async (messageId, isClosed) => {
         const endpoint = isClosed ? `/messages/${messageId}/open` : `/messages/${messageId}/close`;
         try {
-            await axios.patch(`http://localhost:8081${endpoint}`, {}, {
+            await axios.patch(`http://localhost:10010${endpoint}`, {}, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('Authorization')}` },
             });
             fetchMessages(); // Refresh messages after updating status
