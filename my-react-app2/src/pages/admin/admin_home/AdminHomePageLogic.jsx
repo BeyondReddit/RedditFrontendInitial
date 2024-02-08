@@ -1,5 +1,5 @@
 // Setting the JWT token in localStorage
-// localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhQGcuY29tIiwidXNlcklkIjoxLCJwZXJtaXNzaW9ucyI6W3siYXV0aG9yaXR5IjoiQURNSU4ifV19.GLlxylEzb4RYmIyMYyjGiCSZ8qDSueoSRRA5_N97Fis');
+// localStorage.setItem('Authorization', 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhQGcuY29tIiwidXNlcklkIjoxLCJwZXJtaXNzaW9ucyI6W3siYXV0aG9yaXR5IjoiQURNSU4ifV19.GLlxylEzb4RYmIyMYyjGiCSZ8qDSueoSRRA5_N97Fis');
 
 const fetchWithAuth = async (url) => {
     try {

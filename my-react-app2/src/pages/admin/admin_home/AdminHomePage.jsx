@@ -61,7 +61,7 @@ const AdminHomePage = () => {
 
   const recoverPost = async (postId) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('Authorization');
       if (!token) {
         throw new Error('No token found');
       };
@@ -83,7 +83,7 @@ const AdminHomePage = () => {
   };
   const banPost = async (postId) => {
     try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('Authorization');
         if (!token) {
           throw new Error('No token found');
         };
