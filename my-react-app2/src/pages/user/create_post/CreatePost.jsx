@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Form, Button } from "react-bootstrap";
+import axios from "axios";
+import {useAuth} from "../../../context/AuthContext.jsx";
+import {useNavigate} from "react-router-dom";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [images, setImages] = useState([]);
   const [attachments, setAttachments] = useState([]);
+  const { user1 } = useAuth();
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   // Redirect to login if user is not authenticated or not a user
+  //   if (!user1 || user1 !== 'USER') {
+  //     navigate('/login');
+  //   }
+  // }, [user1, navigate]);
+
 
   const handleImageUpload = (event) => {
     const files = Array.from(event.target.files);
@@ -19,17 +32,32 @@ const CreatePost = () => {
   };
 
   const uploadFile = async (file) => {
-    const token = localStorage.getItem("Authorization");
-    const response = await fetch("http://localhost:10010/files/upload", {
-      method: "POST",
-      Authorization: `Bearer ${token}`,
-      body: formData,
-    });
-    if (!response.ok) {
-      throw new Error("Failed to upload file");
-    }
-    const data = await response.json();
-    return data.fileUri;
+    // const token = localStorage.getItem("Authorization");
+    // const response = await fetch("http://localhost:10010/files/upload", {
+    //   method: "POST",
+    //   'Content-Type': 'multipart/form-data',
+    //   Authorization: `Bearer ${token}`,
+    //   body: file,
+    // });
+    // const res = await response.json(); 
+    // console.log(res);
+    // if (!response.ok) {
+    //   throw new Error("Failed to upload file");
+    // }
+    // const data = await response.json();
+    // console.log(data);
+    const formData = new FormData();
+    formData.append('file', file);
+    const token = localStorage.getItem('Authorization');
+      const uploadResponse = await axios.post('http://localhost:10010/files/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(uploadResponse);
+      return uploadResponse.data;
+    // return data.fileUri;
   };
 
   const handleSubmit = async () => {
