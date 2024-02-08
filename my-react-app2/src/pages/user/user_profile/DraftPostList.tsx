@@ -82,7 +82,7 @@ const DraftPostsTable: React.FC<{ DraftPostItems: DraftPostItem[] }> = ({ DraftP
                             </tr>
                         );
                     } else {
-                        return null; // Hide the row if it's in the hiddenRows array
+                        return null;
                     }
                 })}
                 </tbody>

@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext.jsx';
 
+import UserForumList from "./UserForumList.tsx";
+import UserForumProvider from "./UserForumProvider.tsx";
+
 const UserHomePage = () => {
     const { user1 } = useAuth();
     const navigate = useNavigate();
@@ -23,7 +26,11 @@ const UserHomePage = () => {
         <div>
             <h2>Welcome to the User Home Page</h2>
             <button onClick={toProfile}>User Profile</button>
-            <p>Content specific to the user home page.</p>
+            <div>
+                <UserForumProvider>
+                    <UserForumList/>
+                </UserForumProvider>
+            </div>
         </div>
     );
 };

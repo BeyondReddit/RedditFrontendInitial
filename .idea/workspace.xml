@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c21ae9ad-bc1c-4ca2-af36-f6cd1fd9d040" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_home/UserForumList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_home/UserForumProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_home/UserHomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_home/UserHomePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_profile/DraftPostList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_profile/DraftPostList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_profile/HistoryProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_profile/HistoryProvider.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2c4CqKDpCDhLx1gJXne7t5NKfsg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "integration",
+    "last_opened_file_path": "D:/BeaconFireTraining/Week10FinalPorject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.2.5\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="RedditFrontendInitial" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="RedditFrontendInitial" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c21ae9ad-bc1c-4ca2-af36-f6cd1fd9d040" name="Changes" comment="" />
+      <created>1707400903014</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707400903014</updated>
+      <workItem from="1707400909320" duration="6286000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
