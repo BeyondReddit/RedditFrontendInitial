@@ -10,12 +10,12 @@ function MessageManagementPage() {
 
 
     const { user1 } = useAuth();
-    useEffect(() => {
-        // Redirect to login if user is not authenticated or not a user
-        if (!user1 || user1 !== 'ADMIN') {
-            navigate('/login');
-        }
-    }, [user1, navigate]);
+    // useEffect(() => {
+    //     // Redirect to login if user is not authenticated or not a user
+    //     if (!user1 || user1 !== 'ADMIN') {
+    //         navigate('/login');
+    //     }
+    // }, [user1, navigate]);
 
     useEffect(() => {
         fetchMessages();
