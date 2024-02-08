@@ -6,7 +6,6 @@ import {Button} from "react-bootstrap";
 const UserHomePage = () => {
     const { user1 } = useAuth();
     const navigate = useNavigate();
-    console.log("user"+ user1);
 
     useEffect(() => {
         // Redirect to login if user is not authenticated or not a user

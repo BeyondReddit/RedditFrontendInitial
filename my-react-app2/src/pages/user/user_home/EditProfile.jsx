@@ -17,7 +17,6 @@ const EditProfile = () => {
   const [changesMade, setChangesMade] = useState(false);
   const { user1 } = useAuth();
   const navigate = useNavigate();
-  console.log("user66666"+ user1);
   //
   // useEffect(() => {
   //   // Redirect to login if user is not authenticated or not a user
@@ -25,6 +24,7 @@ const EditProfile = () => {
   //     navigate('/login');
   //   }
   // }, [user1, navigate]);
+
 
 
   useEffect(() => {

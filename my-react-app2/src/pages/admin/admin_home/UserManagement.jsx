@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "../../../context/AuthContext.jsx"; // Import Bootstrap CSS
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Hook for navigation
+
+
+  const { user1 } = useAuth();
+  useEffect(() => {
+    // Redirect to login if user is not authenticated or not a user
+    if (!user1 || user1 !== 'ADMIN') {
+      navigate('/login');
+    }
+  }, [user1, navigate]);
 
   useEffect(() => {
     fetchUsers();

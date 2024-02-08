@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import {useAuth} from "../../../context/AuthContext.jsx";
+import {useNavigate} from "react-router-dom";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [images, setImages] = useState([]);
   const [attachments, setAttachments] = useState([]);
+  const { user1 } = useAuth();
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   // Redirect to login if user is not authenticated or not a user
+  //   if (!user1 || user1 !== 'USER') {
+  //     navigate('/login');
+  //   }
+  // }, [user1, navigate]);
+
 
   const handleImageUpload = (event) => {
     const files = Array.from(event.target.files);
