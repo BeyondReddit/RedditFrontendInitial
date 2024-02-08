@@ -22,8 +22,9 @@ const CreatePost = () => {
     const token = localStorage.getItem("Authorization");
     const response = await fetch("http://localhost:10010/files/upload", {
       method: "POST",
+      "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`,
-      body: formData,
+      body: file,
     });
     if (!response.ok) {
       throw new Error("Failed to upload file");
