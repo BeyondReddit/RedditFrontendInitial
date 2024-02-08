@@ -19,9 +19,7 @@ export const userContext = createContext<IUserContext>({
 });
 
 const Top3Provider = ({ children }: IProps) => {
-    const [users, setUsers] = useState([{postid:"65c198ba70823d3e2fea0bfb",title:"Nancy"},
-        {postid:"65c198ba70823d3e2fea0bfb",title:"Dorland"},
-        {postid:"65c198ba70823d3e2fea0bfb",title:"Star"}]);
+    const [users, setUsers] = useState([]);
 
 
     useEffect(() => {
