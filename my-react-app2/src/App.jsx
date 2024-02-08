@@ -4,6 +4,7 @@ import Header from "./components/header/Header.jsx";
 import LoginPage from './pages/login/LoginPage.jsx';
 import RegisterPage from './pages/register/RegisterPage.jsx';
 import VisitorHomePage from "./pages/visitor/visitor_home/VisitorHomePage.jsx";
+
 import AdminHomePage from "./pages/admin/admin_home/AdminHomePage.jsx";
 import UserHomePage from "./pages/user/user_home/UserHomePage.jsx";
 import { AuthProvider, useAuth } from './context/AuthContext.jsx';
@@ -11,6 +12,11 @@ import ProfilePage from './pages/user/user_home/UserProfilePage.jsx';
 import UserManagement from './pages/admin/admin_home/UserManagement.jsx';
 import EditProfile from './pages/user/user_home/EditProfile.jsx';
 import HistoryPage from "./pages/user/user_profile/HistoryPage.jsx";
+import PostDetail from './pages/user/post_detail/PostDetail.jsx';
+
+
+
+
 
 
 const App = () => {
@@ -29,11 +35,9 @@ const App = () => {
                     <Route path="/userprofilepage" element={<ProfilePage />} />
                     <Route path="/usermanagement" element={<UserManagement />} />
                     <Route path="/historyall" element={<HistoryPage />} />
+                    <Route path="/post/:postId" element={<PostDetail />} />
                 </Routes>
             </AuthProvider>
-
-
-
         </Router>
     );
 };
