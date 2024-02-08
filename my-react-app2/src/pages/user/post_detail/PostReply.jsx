@@ -5,7 +5,7 @@ import { Card, Form, Button } from "react-bootstrap";
 import Subreply from "./SubReply";
 import ReplyForm from "./ReplyForm";
 
-function PostReply({ reply }) {
+function PostReply({ reply, postId, onNewRep, isArchived }) {
   const infoStyles = {
     color: "grey",
     fontSize: "10px",
@@ -29,7 +29,14 @@ function PostReply({ reply }) {
             <Subreply key={subreply.replyId} subreply={subreply} />
           ))}
         </ul>
-        <ReplyForm replyType="Subreply" />
+        {!isArchived && (
+          <ReplyForm
+            replyType="Subreply"
+            postId={postId}
+            replyId={reply.replyId}
+            onNewRep={onNewRep}
+          />
+        )}
       </Card.Body>
     </Card>
   );
