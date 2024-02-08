@@ -33,7 +33,8 @@ const CreatePost = () => {
   };
 
   const handleSubmit = async () => {
-    console.log("You clicked submit!");
+    //e.preventdefault();
+    // console.log("You clicked submit!");
     try {
       const imageResponses = await Promise.all(images.map(uploadFile));
       const attachmentResponses = await Promise.all(
@@ -69,6 +70,7 @@ const CreatePost = () => {
       // }));
       // throw error;
     }
+    // history.push('/new-page');
   };
 
   return (
