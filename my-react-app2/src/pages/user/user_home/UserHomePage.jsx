@@ -13,10 +13,7 @@ const UserHomePage = () => {
             navigate('/login');
         }
     }, [user1, navigate]);
-    const toOther= () => {
-        navigate('/editProfile');
 
-    }
     const toProfile= () => {
         navigate('/userprofilepage');
 
@@ -25,8 +22,7 @@ const UserHomePage = () => {
     return (
         <div>
             <h2>Welcome to the User Home Page</h2>
-            <button onClick={toOther}>click</button>
-            <button onClick={toProfile}>click</button>
+            <button onClick={toProfile}>User Profile</button>
             <p>Content specific to the user home page.</p>
         </div>
     );
