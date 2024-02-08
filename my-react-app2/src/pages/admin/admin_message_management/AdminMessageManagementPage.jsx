@@ -73,7 +73,7 @@ function MessageManagementPage() {
                             <td>
                                 <Button 
                                     variant={message.status === 'open' ? "secondary" : "primary"} 
-                                    onClick={() => toggleMessageStatus(message.userId, !(message.status === 'open'))}
+                                    onClick={() => toggleMessageStatus(message.messageId, !(message.status === 'open'))}
                                 >
                                     {message.status === 'open' ? "Close" : "Open"}
                                 </Button>
