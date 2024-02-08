@@ -49,6 +49,8 @@ const MySpace = () => {
                     <h2>{`${user.firstName} ${user.lastName}`}</h2>
                     <p>Joined: {new Date(user.dateJoined).toLocaleDateString()}</p>
                     <Button variant="primary" href="/editprofile">Edit Profile</Button>
+                    
+                    <Button variant="primary" href="/post/new">Create Post</Button>
                 </Col>
             </Row>
         </Container>
