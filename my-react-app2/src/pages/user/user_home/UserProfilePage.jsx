@@ -4,6 +4,7 @@ import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import { useNavigate } from 'react-router-dom';
 import HistoryPage from "../user_profile/HistoryPage.jsx";
+import {useAuth} from "../../../context/AuthContext.jsx";
 
 const MySpace = () => {
     const [user, setUser] = useState(null);
@@ -12,6 +13,15 @@ const MySpace = () => {
         navigate('/historyall');
 
     }
+    const { user1 } = useAuth();
+
+    useEffect(() => {
+        // Redirect to login if user is not authenticated or not a user
+        if (!user1 || user1 !== 'USER') {
+            navigate('/login');
+        }
+    }, [user1, navigate]);
+
 
     useEffect(() => {
         const fetchUser = async () => {

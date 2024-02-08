@@ -46,6 +46,51 @@ function PostDetail() {
     // console.log(requestURL);
   };
 
+  const deletePost = async () => {
+    const requestURL = `http://localhost:10010/posts/delete?postId=${postId}`;
+    const token = localStorage.getItem("Authorization");
+    const response = await fetch(requestURL, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        // Attach the token to the request header
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      const errorResponse = await response.json();
+      alert(errorResponse.message);
+      throw new Error("Failed");
+    } else {
+      handleNewRep();
+    }
+    // console.log(requestURL);
+  };
+
+  const toggleHidePost = async (isHidden) => {
+    let requestURL = `http://localhost:10010/posts/hide?postId=${postId}`;
+    if (isHidden) {
+      requestURL = `http://localhost:10010/posts/publish?postId=${postId}`;
+    }
+    const token = localStorage.getItem("Authorization");
+    const response = await fetch(requestURL, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        // Attach the token to the request header
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      const errorResponse = await response.json();
+      alert(errorResponse.message);
+      throw new Error("Failed");
+    } else {
+      handleNewRep();
+    }
+    // console.log(requestURL);
+  };
+
   const handleShow = () => {
     // Fetch the post data when the modal is opened
     setShow(true);
@@ -121,6 +166,19 @@ function PostDetail() {
                   <Button onClick={() => toggleArchive(post.archived)}>
                     {post.archived ? "Resume Post" : "Archive Post"}
                   </Button>
+                  {post.status !== "DELETED" && (
+                    <Button onClick={() => deletePost()}>Delete Post</Button>
+                  )}
+                  {post.status !== "HIDDEN" && (
+                    <Button onClick={() => toggleHidePost(false)}>
+                      Hide Post
+                    </Button>
+                  )}
+                  {post.status == "HIDDEN" && (
+                    <Button onClick={() => toggleHidePost(true)}>
+                      Open Post
+                    </Button>
+                  )}
                   <Card.Text className="text-muted" style={infoStyles}>
                     Date Created: {new Date(post.dateCreated).toLocaleString()}
                   </Card.Text>
