@@ -7,6 +7,7 @@ import RegisterPage from "./pages/register/RegisterPage.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import VisitorHomePage from "./pages/visitor/visitor_home/VisitorHomePage.jsx";
 import PostDetail from "./pages/user/post_detail/PostDetail.jsx";
+import CreatePost from "./pages/user/create_post/CreatePost.jsx";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/post/:postId" element={<PostDetail />} />
+          <Route path="/post/new" element={<CreatePost />} />
         </Routes>
       </Router>
     </>

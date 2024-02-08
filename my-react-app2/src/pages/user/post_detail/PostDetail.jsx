@@ -71,21 +71,20 @@ function PostDetail() {
           },
         }
       );
-      // const response = await fetch();
       const postData = await response.json();
-      // const userResponse = await fetch(
-      //   `http://localhost:10010/users/getUserOnlyById/${postData.data.userId}`,
-      //   {
-      //     method: "GET",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       // Attach the token to the request header
-      //       Authorization: `Bearer ${token}`,
-      //     },
-      //   }
-      // );
-      // const userData = await userResponse.json();
-      // setUsername(userData.firstName + " " + userData.lastName);
+      const userResponse = await fetch(
+        `http://localhost:10010/users/getUserOnlyById/${postData.data.userId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            // Attach the token to the request header
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const userData = await userResponse.json();
+      setUsername(userData.firstName + " " + userData.lastName);
       setPost(postData.data);
       // console.log(post);
     } catch (error) {
