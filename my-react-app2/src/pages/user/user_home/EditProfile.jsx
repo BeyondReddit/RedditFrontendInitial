@@ -10,6 +10,7 @@ const EditProfile = () => {
     firstName: '',
     lastName: '',
     newEmail: '',
+    userId: '',
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const [changesMade, setChangesMade] = useState(false);
@@ -100,7 +101,8 @@ const saveProfile = async () => {
         const token = localStorage.getItem('Authorization');
         await axios.post('http://localhost:10010/users/updateUserInfo', {
           ...user,
-          userId: JSON.parse(localStorage.getItem('user')).userId,
+          // userId: JSON.parse(localStorage.getItem('user')).userId,
+          userId: user.userId,
         }, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -110,7 +112,7 @@ const saveProfile = async () => {
         // Optionally, update the user in local storage if needed
         localStorage.setItem('user', JSON.stringify({ ...user, profileImageURL: profileUpdated ? newUrl : user.profileImageURL }));
   
-        window.location.href = '/edit-profile'; // Redirect or refresh
+        window.location.href = '/userprofilepage'; // Redirect or refresh
       } catch (error) {
         console.error('Error saving profile:', error);
       }
