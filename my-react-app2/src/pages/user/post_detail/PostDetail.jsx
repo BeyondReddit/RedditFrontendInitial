@@ -27,7 +27,7 @@ function PostDetail() {
     if (isArchived) {
       requestURL = `http://localhost:10010/posts/unarchive?postId=${postId}`;
     }
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Authorization");
     const response = await fetch(requestURL, {
       method: "PATCH",
       headers: {
@@ -59,7 +59,7 @@ function PostDetail() {
 
   const fetchPost = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("Authorization");
       const response = await fetch(
         `http://localhost:10010/posts?postId=${postId}`,
         {

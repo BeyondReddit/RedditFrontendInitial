@@ -17,7 +17,7 @@ function EditModal({ postId, title, content, onCloseShow, show, onNewRep }) {
     // console.log(requestBody);
 
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("Authorization");
       const response = await fetch(
         `http://localhost:10010/posts/edit?postId=${postId}`,
         {

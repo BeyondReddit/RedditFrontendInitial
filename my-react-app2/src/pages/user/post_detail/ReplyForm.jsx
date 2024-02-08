@@ -15,7 +15,7 @@ export default function ReplyForm({ replyType, postId, replyId, onNewRep }) {
       //   });
       //   console.log(myBody);
       // console.log(replyType);
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("Authorization");
       let fetchUrl;
       const REPLY_URL = "http://localhost:10010/posts/reply";
       const SUBREPLY_URL = "http://localhost:10010/posts/subreply";

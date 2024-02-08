@@ -19,7 +19,7 @@ const CreatePost = () => {
   };
 
   const uploadFile = async (file) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Authorization");
     const response = await fetch("http://localhost:10010/files/upload", {
       method: "POST",
       Authorization: `Bearer ${token}`,
@@ -47,7 +47,7 @@ const CreatePost = () => {
         attachments: attachmentResponses,
       };
       console.log(postData);
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("Authorization");
       const response = await fetch(`http://localhost:10010/posts/new`, {
         method: "POST",
         headers: {
