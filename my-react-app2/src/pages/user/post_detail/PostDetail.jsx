@@ -70,7 +70,7 @@ function PostDetail() {
   const toggleHidePost = async (isHidden) => {
     let requestURL = `http://localhost:10010/posts/hide?postId=${postId}`;
     if (isHidden) {
-      requestURL = `http://localhost:10010/posts/reveal?postId=${postId}`;
+      requestURL = `http://localhost:10010/posts/publish?postId=${postId}`;
     }
     const token = localStorage.getItem("Authorization");
     const response = await fetch(requestURL, {

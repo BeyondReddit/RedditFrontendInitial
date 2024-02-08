@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c21ae9ad-bc1c-4ca2-af36-f6cd1fd9d040" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_home/UserForumList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_home/UserForumProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_home/UserHomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_home/UserHomePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_profile/DraftPostList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_profile/DraftPostList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_profile/HistoryProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_profile/HistoryProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_profile/Top3Provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app2/src/pages/user/user_profile/Top3Provider.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +63,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1707400903014</updated>
-      <workItem from="1707400909320" duration="6595000" />
+      <workItem from="1707400909320" duration="8251000" />
     </task>
     <servers />
   </component>
