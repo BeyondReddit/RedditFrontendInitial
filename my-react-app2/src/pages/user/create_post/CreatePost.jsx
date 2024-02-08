@@ -61,6 +61,8 @@ const CreatePost = () => {
       if (!response.ok) {
         const responseData = await response.json();
         throw responseData.message;
+      } else {
+        alert("Post created!");
       }
     } catch (e) {
       alert(e);
