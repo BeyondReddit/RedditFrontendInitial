@@ -21,6 +21,7 @@ import EditProfile from "./pages/user/user_home/EditProfile.jsx";
 import HistoryPage from "./pages/user/user_profile/HistoryPage.jsx";
 import PostDetail from "./pages/user/post_detail/PostDetail.jsx";
 import CreatePost from "./pages/user/create_post/CreatePost.jsx";
+import UnverifiedUser from "./pages/unverifiedUser/UnverifiedUser.jsx";
 
 const App = () => {
   return (
@@ -28,10 +29,12 @@ const App = () => {
       <AuthProvider>
         <Header />
         <Routes>
+          <Route path="/" element={<VisitorHomePage />} />
           <Route path="/visitor-home" element={<VisitorHomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/admin-home" element={<AdminHomePage />} />
+          <Route path="/unverified-home" element={<UnverifiedUser />} />
           <Route path="/user-home" element={<UserHomePage />} />
           <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/userprofilepage" element={<ProfilePage />} />
@@ -41,6 +44,7 @@ const App = () => {
           <Route path="/post/new" element={<CreatePost />} />
           <Route path="/contactus" element={<ContactAdminPage />} />
           <Route path="/messages" element={<MessageManagementPage />} />
+
         </Routes>
       </AuthProvider>
     </Router>
